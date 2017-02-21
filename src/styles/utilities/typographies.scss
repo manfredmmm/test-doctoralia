@@ -1,0 +1,39 @@
+// Webfonts font face
+@font-face {
+  font-family: 'Cabin Regular';
+  font-style: normal;
+  src: url('webfonts/CabinRegular.woff') format('woff'), url('webfonts/CabinRegular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cabin Medium';
+  font-style: normal;
+  src: url('webfonts/CabinMedium.woff') format('woff'), url('webfonts/CabinMedium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cabin Semibold';
+  font-style: normal;
+  src: url('webfonts/CabinSemibold.woff') format('woff'), url('webfonts/CabinSemibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cabin Bold';
+  font-style: normal;
+  src: url('webfonts/CabinBold.woff') format('woff'), url('webfonts/CabinBold.woff2') format('woff2');
+}
+
+// Font-size variables
+$size-small:    12px;
+$size-base:     14px;
+$size-large:    16px;
+$size-larger:   18px;
+$size-largest:  20px;
+$size-huge:     22px;
+$size-hugest:   32px;
+
+$arial:           Arial, Helvetica, sans-serif;
+$cabin:           'Cabin Regular', Helvetica, sans-serif;
+$cabin-medium:    'Cabin Medium', Helvetica, sans-serif;
+$cabin-semibold:  'Cabin Semibold', Helvetica, sans-serif;
+$cabin-bold:      'Cabin Bold', Helvetica, sans-serif;

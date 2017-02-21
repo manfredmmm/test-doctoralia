@@ -1,0 +1,19 @@
+// ---------------------------------------------------------
+// Default links behaviour
+// Usage: @include link(#ddd, #ff0000);
+// ---------------------------------------------------------
+@mixin link($color, $hover-color: $color) {
+  color: $color;
+  text-decoration: none;
+  transition-duration: $default-timing;
+  &:hover {
+    color: $hover-color;
+    text-decoration: underline;
+  }
+}
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+}

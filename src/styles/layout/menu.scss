@@ -1,0 +1,25 @@
+.navigation {
+  background-image: linear-gradient($emerald, $fruit-salad);
+  font-family: $cabin-semibold;
+  letter-spacing: 0;
+  font-size: $size-largest;
+  height: $menu-height;
+}
+
+.nav__list {
+  li {
+    display: inline-block;
+    line-height: 50px;
+  }
+  li:not(:first-child) {
+    margin-left: 45px;
+  }
+}
+
+.nav__link {
+  @include link($white, darken($white, 5%));
+  text-shadow: 0 -1px 1px $william;
+  &:hover {
+    text-decoration: none;
+  }
+}

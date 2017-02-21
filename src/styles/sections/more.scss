@@ -1,0 +1,31 @@
+.more {
+  padding-bottom: 50px;
+}
+
+.more-info {
+  width: 690px;
+}
+
+.more__info {
+  margin-bottom: 25px;
+  margin-left: 30px;
+  .arrow-right {
+    margin-left: -22px;
+    margin-right: 14px;
+  }
+}
+
+.more__info:before {
+  @extend .arrow-right;
+}
+
+.subtitle {
+  font-size: $size-huge;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted $nobel;
+  margin-bottom: 18px;
+}
+
+.subtitle--activation {
+  max-width: 690px;
+}

@@ -1,0 +1,52 @@
+@import 'utilities/normalize';
+
+@import 'utilities/variables';
+@import 'utilities/colors';
+@import 'utilities/mixins';
+@import 'utilities/typographies';
+@import 'utilities/helpers';
+
+@import 'layout/header';
+@import 'layout/menu';
+@import 'layout/footer';
+
+@import 'sections/titles';
+@import 'sections/slider';
+@import 'sections/activation';
+@import 'sections/more';
+@import 'sections/support';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: $size-base;
+  font-family: $arial;
+  background-color: $white;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}

@@ -1,0 +1,27 @@
+.footer {
+  border-top: 1px solid $alto;
+  background-color: $gallery;
+}
+
+.footer__info {
+  line-height: 40px;
+  color: $dove-gray;
+  li {
+    display: inline-block;
+    margin-right: 5px;
+    line-height: 12px;
+  }
+  li:last-child {
+    padding-left: 5px;
+    border-left: 1px solid $dove-gray;
+  }
+  a {
+    @include link($dove-gray);
+    text-decoration: underline;
+  }
+}
+
+.footer__logo {
+  margin-right: 10px;
+  vertical-align: middle;
+}

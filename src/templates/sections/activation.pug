@@ -1,0 +1,54 @@
+.centered-content
+  .class-table
+    h3.subtitle.subtitle--activation Activación de First Class
+    p.activation__description Seleccione las especialidades que desea activar:
+    form#activation-form(action='#')
+      table.specs
+        thead
+          tr.specs__head
+            th Especialidad
+            th.center-align Precio
+            th Disponibilidad
+        tbody
+          tr.specs__row.js-enable__spec
+            td.specs__row__value
+              input.checkbox(type='checkbox' value='anesthesia')
+              label(for='check-anesthesia') Anestesiología y Reanimación
+            td.center-align 19,50€
+            td 3 disponibles
+          tr.specs__row.js-enable__spec
+            td
+              input.checkbox(type='checkbox' value='speech')
+              label Logopedia y Logofoniatría
+            td.center-align 19,50€
+            td 3 disponibles
+          tr.specs__row.js-enable__spec
+            td
+              input.checkbox(type='checkbox' value='urgency')
+              label Medicina de Urgencias
+            td.center-align 19,50€
+            td 3 disponibles
+      .button__row.center-align
+        button.js-first-class.button__activate(form='activation-form' type='submit')
+          span Activar First Class
+        span.button__info
+          i.user__icons.user__icons--phone
+          | Contáctenos al
+          b  902 750 655
+          |  para cualquier duda
+      .info__row
+        span.info__icon.center-align i
+        span.info__description
+          | Si desea contratar First Class
+          b  anual con descuentos especiales
+          |  o contratar
+          b  First Class para sus profesionales
+          | , llámenos al 902 750 655.
+  .support
+    .support__box
+      h4 Soporte
+      span Si tiene alguna duda, llámenos:
+      p.support__phone 902 750 655
+      span o bien
+      form
+        input.support__input(type='text' required placeholder='Escriba aquí su pregunta')

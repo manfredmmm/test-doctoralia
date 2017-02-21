@@ -1,0 +1,34 @@
+h1,
+h2 {
+  color: $alto;
+  font-weight: normal;
+}
+
+.title {
+  position: relative;
+  height: 36px;
+}
+
+.title__name {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 20px;
+  background-color: $tundora;
+  font-family: $cabin-bold;
+  font-size: $size-hugest;
+}
+
+.title__line {
+  position: absolute;
+  top: 7px;
+  width: 100%;
+  border: 1px dotted $alto;
+  border-width: 1px 0 0;
+}
+
+.tagline {
+  margin: 5px 0 40px 0;
+  font-family: $cabin;
+  font-size: $size-largest;
+}
