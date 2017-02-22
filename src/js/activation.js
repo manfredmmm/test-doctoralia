@@ -1,25 +1,28 @@
-import $ from './jquery';
-
 // --------------------------------------------------------------------------------
 // Activation First Class table
 // --------------------------------------------------------------------------------
+const domReady = function (callback) {
+  document.readyState === 'interactive' || document.readyState === 'complete' ?
+    callback() :
+    document.addEventListener('DOMContentLoaded', callback);
+};
 
-$(() => {
+domReady(() => {
   const toogleCheckbox = (event) => {
-    const value = $(event.currentTarget).find('.checkbox');
+    const row = event.currentTarget;
+    const value = row.getElementsByClassName('checkbox')[0];
 
-    $(event.currentTarget).toggleClass('checked');
-    value.is(':checked') ? value.prop('checked', false) : value.prop('checked', true);
+    row.classList.toggle('checked');
+    value.checked ? value.checked = false : value.checked = true;
   };
 
-  $('.js-enable__spec').on('click', (event) => {
-    const notCheckbox = event.target.className !== 'checkbox';
+  const row = document.getElementsByClassName('js-enable__spec');
 
-    notCheckbox ? toogleCheckbox(event) : $(event.currentTarget).toggleClass('checked');
-  });
-
-  $('.js-first-class').on('click', (event) => {
-    const activated = $('.specs').find('input:checked').length;
-    activated > 0 ? console.log('Sending form') : event.preventDefault();
-  });
+  for (let i = 0; i < row.length; i += 1) {
+    row[i].addEventListener('click', (event) => {
+      const notCheckbox = event.target.className !== 'checkbox';
+      
+      notCheckbox ? toogleCheckbox(event) : event.currentTarget.classList.toggle('checked');
+    });
+  }
 });
