@@ -69,7 +69,4 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   setInterval(carousel, timer);
-
-  // Initial state
-  showSlide();
 });
