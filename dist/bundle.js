@@ -9876,22 +9876,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 // --------------------------------------------------------------------------------
 
 __WEBPACK_IMPORTED_MODULE_0__jquery___default()(() => {
+  // Toggle row class (checked) and change input checked property
   const toogleCheckbox = event => {
     const value = __WEBPACK_IMPORTED_MODULE_0__jquery___default()(event.currentTarget).find('.checkbox');
-
     __WEBPACK_IMPORTED_MODULE_0__jquery___default()(event.currentTarget).toggleClass('checked');
     value.is(':checked') ? value.prop('checked', false) : value.prop('checked', true);
   };
 
   __WEBPACK_IMPORTED_MODULE_0__jquery___default()('.js-enable__spec').on('click', event => {
-    const notCheckbox = event.target.className !== 'checkbox';
-
-    notCheckbox ? toogleCheckbox(event) : __WEBPACK_IMPORTED_MODULE_0__jquery___default()(event.currentTarget).toggleClass('checked');
+    // Custom toggle on row click
+    event.target.className !== 'checkbox' ? toogleCheckbox(event) : __WEBPACK_IMPORTED_MODULE_0__jquery___default()(event.currentTarget).toggleClass('checked');
   });
 
   __WEBPACK_IMPORTED_MODULE_0__jquery___default()('.js-first-class').on('click', event => {
-    const activated = __WEBPACK_IMPORTED_MODULE_0__jquery___default()('.specs').find('input:checked').length;
-    activated > 0 ? console.log('Sending form') : event.preventDefault();
+    // Confirm if some input is checked
+    __WEBPACK_IMPORTED_MODULE_0__jquery___default()('.specs').find('input:checked').length > 0 ? console.log('Sending form') : event.preventDefault();
   });
 });
 
@@ -9907,12 +9906,16 @@ __WEBPACK_IMPORTED_MODULE_0__jquery___default()(() => {
 // --------------------------------------------------------------------------------
 // Slider
 // --------------------------------------------------------------------------------
-
 __WEBPACK_IMPORTED_MODULE_0__jquery___default()(() => {
+  // Variables:
+  // Each 2500ms we will see what we have to show;
+  // image (imageOverlay) or move
   const timer = 2500;
   let currentSlide = 0;
   const nSlides = __WEBPACK_IMPORTED_MODULE_0__jquery___default()('.js-slider__image').length;
 
+  // Get previous index
+  // returns previous index
   const getPreviousIndex = () => {
     let previousIdx = currentSlide - 1;
     if (previousIdx < 0) {
@@ -9921,9 +9924,15 @@ __WEBPACK_IMPORTED_MODULE_0__jquery___default()(() => {
     return previousIdx;
   };
 
+  // Get Slide (slider) or text (slides): Both are list item
+  // For slider: it contains two images (normal and overlayImage)
+  // For slides: it contains two spans
   const getSlide = n => __WEBPACK_IMPORTED_MODULE_0__jquery___default()(`.js-slider__image:nth-child(${n + 1})`);
   const getText = n => __WEBPACK_IMPORTED_MODULE_0__jquery___default()(`.js-slide__item:nth-child(${n + 1})`);
 
+  // Get next slide (li item)
+  // and remove the current/previous classes
+  // update currentSlide index (between 1 and 4)
   const nextSlide = () => {
     getSlide(getPreviousIndex()).removeClass('previous');
     getSlide(currentSlide).removeClass('current');
@@ -9931,30 +9940,38 @@ __WEBPACK_IMPORTED_MODULE_0__jquery___default()(() => {
     currentSlide = (currentSlide + 1) % nSlides;
   };
 
+  // Show the current slide
+  // and add current/previous classes
   const showSlide = () => {
     getSlide(getPreviousIndex()).addClass('previous');
     getSlide(currentSlide).addClass('current');
     getText(currentSlide).addClass('current');
   };
 
+  // Show overlay image for current slide
+  // and add/remove for current and previous overlay img
   const showOverlay = () => {
     getSlide(getPreviousIndex()).find('.slider__overlay').removeClass('current');
     getSlide(currentSlide).find('.slider__overlay').addClass('current');
   };
 
+  // True if the current slide needs overlay
+  // = if the current slide doesn't have any img with current class (overlay)
   const slideNeedsOverlay = () => !getSlide(currentSlide).find('.slider__overlay').hasClass('current');
 
+  // Carousel function called each 2500ms
   const carousel = () => {
+    // Show overlay?
     if (slideNeedsOverlay()) {
       showOverlay();
     } else {
+      // Normal behaviour
       nextSlide();
       showSlide();
     }
   };
 
   setInterval(carousel, timer);
-  showSlide();
 });
 
 /***/ }),
