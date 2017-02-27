@@ -15,3 +15,5 @@ yarn start
 ```
 ### Open it without setup
 You can open index.html from /dist directory with your browser in order to see the page
+### Demo version on surge.sh
+[doctoralia-test.surge.sh](http://doctoralia-test.surge.sh)
