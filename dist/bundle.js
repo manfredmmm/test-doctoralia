@@ -1,41 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -46,7 +46,7 @@
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -55,49 +55,52 @@
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
-
+/******/ 	__webpack_require__.p = "";
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 // --------------------------------------------------------------------------------
 // Activation First Class table
 // --------------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   // Toggle row class (checked) and change input checked property
-  const toogleCheckbox = event => {
-    const row = event.currentTarget;
-    const value = row.getElementsByClassName('checkbox')[0];
+  var toogleCheckbox = function toogleCheckbox(event) {
+    var row = event.currentTarget;
+    var value = row.getElementsByClassName('checkbox')[0];
     row.classList.toggle('checked');
     value.checked ? value.checked = false : value.checked = true;
   };
 
   // Add listener for each row
-  const row = document.getElementsByClassName('js-enable__spec');
-  for (let i = 0; i < row.length; i += 1) {
-    row[i].addEventListener('click', event => {
+  var row = document.getElementsByClassName('js-enable__spec');
+  for (var i = 0; i < row.length; i += 1) {
+    row[i].addEventListener('click', function (event) {
       // Custom toggle on row click
       event.target.className !== 'checkbox' ? toogleCheckbox(event) : event.currentTarget.classList.toggle('checked');
     });
   }
 
   // Add click listener to submit button
-  const classSubmit = document.getElementsByClassName('js-first-class')[0];
-  classSubmit.addEventListener('click', event => {
+  var classSubmit = document.getElementsByClassName('js-first-class')[0];
+  classSubmit.addEventListener('click', function (event) {
     // Confirm if some input is checked
-    let activated = false;
-    for (let i = 0; i < row.length; i += 1) {
-      if (row[i].getElementsByClassName('checkbox')[0].checked) {
+    var activated = false;
+    for (var _i = 0; _i < row.length; _i += 1) {
+      if (row[_i].getElementsByClassName('checkbox')[0].checked) {
         activated = true;
       }
     }
@@ -107,23 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 // --------------------------------------------------------------------------------
 // Slider
 // --------------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   // Variables:
   // Each 2500ms we will see what we have to show;
   // image (imageOverlay) or move
-  const timer = 2500;
-  let currentSlide = 0;
-  const nSlides = document.getElementsByClassName('js-slider__image').length;
+  var timer = 2500;
+  var currentSlide = 0;
+  var nSlides = document.getElementsByClassName('js-slider__image').length;
 
   // Get previous index
   // returns previous index
-  const getPreviousIndex = () => {
-    let previousIdx = currentSlide - 1;
+  var getPreviousIndex = function getPreviousIndex() {
+    var previousIdx = currentSlide - 1;
     if (previousIdx < 0) {
       previousIdx = nSlides - 1;
     }
@@ -133,13 +139,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Get Slide (slider) or text (slides): Both are list item
   // For slider: it contains two images (normal and overlayImage)
   // For slides: it contains two spans
-  const getSlide = n => document.getElementsByClassName('js-slider__image')[n];
-  const getText = n => document.getElementsByClassName('js-slide__item')[n];
+  var getSlide = function getSlide(n) {
+    return document.getElementsByClassName('js-slider__image')[n];
+  };
+  var getText = function getText(n) {
+    return document.getElementsByClassName('js-slide__item')[n];
+  };
 
   // Get next slide (li item)
   // and remove the current/previous classes
   // update currentSlide index (between 1 and 4)
-  const nextSlide = () => {
+  var nextSlide = function nextSlide() {
     getSlide(getPreviousIndex()).classList.remove('previous');
     getSlide(currentSlide).classList.remove('current');
     getText(currentSlide).classList.remove('current');
@@ -148,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Show the current slide
   // and add current/previous classes
-  const showSlide = () => {
+  var showSlide = function showSlide() {
     getSlide(getPreviousIndex()).classList.add('previous');
     getSlide(currentSlide).classList.add('current');
     getText(currentSlide).classList.add('current');
@@ -156,17 +166,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Show overlay image for current slide
   // and add/remove for current and previous overlay img
-  const showOverlay = () => {
+  var showOverlay = function showOverlay() {
     getSlide(getPreviousIndex()).getElementsByClassName('slider__overlay')[0].classList.remove('current');
     getSlide(currentSlide).getElementsByClassName('slider__overlay')[0].classList.add('current');
   };
 
   // True if the current slide needs overlay
   // = if the current slide doesn't have any img with current class (overlay)
-  const slideNeedsOverlay = () => !(getSlide(currentSlide).getElementsByClassName('current').length > 0);
+  var slideNeedsOverlay = function slideNeedsOverlay() {
+    return !(getSlide(currentSlide).getElementsByClassName('current').length > 0);
+  };
 
   // Carousel function called each 2500ms
-  const carousel = () => {
+  var carousel = function carousel() {
     if (slideNeedsOverlay()) {
       // Show overlay?
       showOverlay();
@@ -299,7 +311,7 @@ exports = module.exports = __webpack_require__(18)();
 
 
 // module
-exports.push([module.i, "/* Document\n   ========================================================================== */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Correct the line height in all browsers.\n * 3. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  line-height: 1.15;\n  /* 2 */\n  -ms-text-size-adjust: 100%;\n  /* 3 */\n  -webkit-text-size-adjust: 100%;\n  /* 3 */ }\n/* Sections\n   ========================================================================== */\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n/**\n * Add the correct display in IE 9-.\n */\narticle, aside, footer, header, nav, section {\n  display: block; }\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n/* Grouping content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\nfigcaption, figure, main {\n  /* 1 */\n  display: block; }\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\na:active, a:hover {\n    outline-width: 0; }\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb, strong {\n  font-weight: inherit; }\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb, strong {\n  font-weight: bolder; }\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode, kbd, samp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\nsub {\n  bottom: -0.25em; }\nsup {\n  top: -0.5em; }\n/* Embedded content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\naudio, video {\n  display: inline-block; }\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change the font styles in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton, input, optgroup, select, textarea {\n  font-family: sans-serif;\n  /* 1 */\n  font-size: 100%;\n  /* 1 */\n  line-height: 1.15;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton, input {\n  /* 1 */\n  overflow: visible; }\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton, select {\n  /* 1 */\n  text-transform: none; }\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton, html [type=\"button\"], [type=\"reset\"], [type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner, [type=\"button\"]::-moz-focus-inner, [type=\"reset\"]::-moz-focus-inner, [type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring, [type=\"button\"]:-moz-focusring, [type=\"reset\"]:-moz-focusring, [type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"], [type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button, [type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n[type=\"search\"]::-webkit-search-cancel-button, [type=\"search\"]::-webkit-search-decoration {\n    -webkit-appearance: none; }\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n/* Interactive\n   ========================================================================== */\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\ndetails, menu {\n  display: block; }\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item; }\n/* Scripting\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\ncanvas {\n  display: inline-block; }\n/**\n * Add the correct display in IE.\n */\ntemplate, [hidden] {\n  display: none; }\n/* Hidden\n   ========================================================================== */\n/**\n * Add the correct display in IE 10-.\n */\n@font-face {\n  font-family: 'Cabin Regular';\n  font-style: normal;\n  src: url(" + __webpack_require__(24) + ") format(\"woff\"), url(" + __webpack_require__(25) + ") format(\"woff2\"); }\n@font-face {\n  font-family: 'Cabin Medium';\n  font-style: normal;\n  src: url(" + __webpack_require__(22) + ") format(\"woff\"), url(" + __webpack_require__(23) + ") format(\"woff2\"); }\n@font-face {\n  font-family: 'Cabin Semibold';\n  font-style: normal;\n  src: url(" + __webpack_require__(26) + ") format(\"woff\"), url(" + __webpack_require__(27) + ") format(\"woff2\"); }\n@font-face {\n  font-family: 'Cabin Bold';\n  font-style: normal;\n  src: url(" + __webpack_require__(20) + ") format(\"woff\"), url(" + __webpack_require__(21) + ") format(\"woff2\"); }\n.right {\n  float: right; }\n.centered-content {\n  width: 940px;\n  margin: 0 auto; }\n.clearfix::after {\n  content: '';\n  display: table;\n  clear: both; }\n.center-align {\n  text-align: center; }\n.arrow-right, .more__info:before {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  border-top: 6px solid transparent;\n  border-bottom: 6px solid transparent;\n  border-left: 7px solid #9b9b9b; }\n.header {\n  height: 75px;\n  font-size: 12px;\n  background-color: #eee; }\n.header__logo {\n  margin-top: 13px; }\n.header__links {\n  margin-top: 5px; }\n.header__links li {\n    display: inline-block; }\n.header__links li:not(:first-child) {\n    margin-left: 8px;\n    border-left: 1px solid #666; }\n.header__link {\n  padding-left: 8px;\n  line-height: 22px;\n  color: #666; }\na.header__link {\n  text-decoration: underline; }\n.user__icons {\n  line-height: 20px;\n  vertical-align: middle;\n  background-image: url(\"/images/user-icons.png\");\n  width: 20px;\n  height: 20px;\n  display: inline-block; }\n.user__icons--premium {\n  background-position: 0 0;\n  margin-right: 8px; }\n.user__icons--premium:hover, .header__link:hover .user__icons--premium {\n  background-position: 0 20px; }\n.user__icons--phone {\n  background-position: 20px 0;\n  margin-right: 8px; }\n.navigation {\n  background-image: -webkit-linear-gradient(#5ac865, #257f28);\n  background-image: linear-gradient(#5ac865, #257f28);\n  font-family: \"Cabin Semibold\", Helvetica, sans-serif;\n  letter-spacing: 0;\n  font-size: 20px;\n  height: 45px; }\n.nav__list li {\n  display: inline-block;\n  line-height: 50px; }\n.nav__list li:not(:first-child) {\n  margin-left: 45px; }\n.nav__link {\n  color: #fff;\n  text-decoration: none;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s;\n  text-shadow: 0 -1px 1px #385d66; }\n.nav__link:hover {\n    color: #f2f2f2;\n    text-decoration: underline; }\n.nav__link:hover {\n    text-decoration: none; }\n.footer {\n  border-top: 1px solid #ddd;\n  background-color: #eee; }\n.footer__info {\n  line-height: 40px;\n  color: #666; }\n.footer__info li {\n    display: inline-block;\n    margin-right: 5px;\n    line-height: 12px; }\n.footer__info li:last-child {\n    padding-left: 5px;\n    border-left: 1px solid #666; }\n.footer__info a {\n    color: #666;\n    text-decoration: none;\n    -webkit-transition-duration: 0.3s;\n            transition-duration: 0.3s;\n    text-decoration: underline; }\n.footer__info a:hover {\n      color: #666;\n      text-decoration: underline; }\n.footer__logo {\n  margin-right: 10px;\n  vertical-align: middle; }\nh1, h2 {\n  color: #ddd;\n  font-weight: normal; }\n.title {\n  position: relative;\n  height: 36px; }\n.title__name {\n  position: absolute;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  padding: 0 20px;\n  background-color: #454545;\n  font-family: \"Cabin Bold\", Helvetica, sans-serif;\n  font-size: 32px; }\n.title__line {\n  position: absolute;\n  top: 7px;\n  width: 100%;\n  border: 1px dotted #ddd;\n  border-width: 1px 0 0; }\n.tagline {\n  margin: 5px 0 40px 0;\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  font-size: 20px; }\n.first-class {\n  padding: 40px 0;\n  background-image: -webkit-linear-gradient(#454545 85%, #7e7e7e 100%);\n  background-image: linear-gradient(#454545 85%, #7e7e7e 100%); }\n.slider-container {\n  float: left;\n  width: 600px;\n  height: 345px; }\n.image-container {\n  position: relative; }\n.mac {\n  position: absolute; }\n.mac--overlay {\n  top: 3px;\n  right: 60px;\n  z-index: 2; }\n.slider {\n  position: absolute;\n  top: 13px;\n  left: 70px;\n  width: 461px;\n  height: 297px;\n  overflow: hidden; }\n.slider__image {\n  position: absolute;\n  top: 0;\n  left: 461px;\n  z-index: 1; }\n.slider__image.current {\n    -webkit-transform: translateX(-461px);\n            transform: translateX(-461px);\n    z-index: 1;\n    -webkit-transition-duration: 0.75s;\n            transition-duration: 0.75s; }\n.slider__image.previous {\n    -webkit-transform: translateX(calc(-461px * 2));\n            transform: translateX(calc(-461px * 2));\n    z-index: 0;\n    -webkit-transition-duration: 0.75s;\n            transition-duration: 0.75s; }\n.slider__overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  opacity: 0;\n  -webkit-transition-duration: 1s;\n          transition-duration: 1s; }\n.slider__overlay.current {\n    opacity: 1; }\n.selector-container {\n  float: left;\n  width: 340px;\n  padding-left: 40px;\n  margin-top: 20px; }\n.slide__features {\n  margin: 0 0 10px 0;\n  font-size: 22px;\n  color: #fff;\n  font-family: \"Cabin Bold\", Helvetica, sans-serif; }\n.slide__item {\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  color: #fff;\n  font-size: 18px;\n  opacity: .5;\n  margin: 0 0 15px -40px; }\n.slide__item.current {\n    opacity: 1; }\n.slide__item.current .slide__number {\n      background-color: #fff;\n      color: #454545; }\n.slide__number {\n  display: inline-block;\n  width: 32px;\n  height: 32px;\n  border-radius: 100%;\n  border: 1px solid #fff;\n  text-align: center;\n  line-height: 30px;\n  margin-right: 10px;\n  text-indent: 1px;\n  vertical-align: top; }\n.slide__text {\n  display: inline-block;\n  width: 298px;\n  margin-top: 4px;\n  line-height: 1.4;\n  color: #fff;\n  text-decoration: none; }\n.slide__see {\n  color: #fff;\n  font-size: 16px;\n  text-decoration: underline;\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  margin-top: 10px;\n  display: inline-block; }\n.class-activation {\n  padding: 50px 0; }\n.class-table {\n  float: left;\n  width: 690px; }\n.activation__description {\n  font-size: 16px;\n  margin: 18px 0 20px 0; }\n.specs {\n  border: 1px solid #ddd;\n  border-collapse: collapse;\n  width: 100%; }\n.specs__head {\n  font-size: 16px;\n  padding: 10px 15px;\n  text-align: left;\n  background-color: #ddd; }\n.specs__row {\n  font-size: 14px;\n  cursor: pointer;\n  background-color: #fff;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s; }\n.specs__row input[type='checkbox'] {\n    margin-right: 8px; }\n.specs__row label {\n    cursor: pointer; }\n.specs__row:nth-child(even).checked, .specs__row:nth-child(odd).checked {\n    background-color: #e6f5e6; }\n.specs__row:nth-child(even) {\n  background-color: #f2f2f2;\n  border: 1px solid #ddd;\n  border-width: 1px 0; }\nth {\n  padding: 15px;\n  font-weight: normal; }\ntd {\n  padding: 10px 15px; }\n.button__row {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px;\n  width: 100%;\n  padding: 30px 0; }\n.button__activate {\n  box-shadow: inset 0 1px 1px 0 #fff, inset 0 -1px 1px 0 #0f1410;\n  background-image: -webkit-linear-gradient(#ac01af, #670167);\n  background-image: linear-gradient(#ac01af, #670167);\n  border-radius: 5px;\n  border: 1px solid #670167;\n  color: #fff;\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  padding: 19px 0 17px 0;\n  width: 380px;\n  font-size: 20px;\n  outline: none;\n  text-shadow: 0 1px #670167;\n  cursor: pointer;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s; }\n.button__activate:hover {\n    background-image: -webkit-linear-gradient(#b601b9, #710171);\n    background-image: linear-gradient(#b601b9, #710171); }\n.button__activate:active {\n    box-shadow: inset 0 -5px 20px 0 #670167; }\n.button__activate:after {\n    content: '>>';\n    display: inline-block;\n    -webkit-transform: scaleX(0.5) scaleY(1.2);\n            transform: scaleX(0.5) scaleY(1.2);\n    font-family: Arial, Helvetica, sans-serif; }\n.button__info {\n  display: block;\n  margin-top: 25px;\n  font-size: 16px;\n  color: #666; }\n.info__row {\n  padding: 15px 40px 15px 20px;\n  background-color: #dff8ff;\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 1px;\n  width: 100%; }\n.info__icon {\n  display: inline-block;\n  font-size: 24px;\n  color: #fff;\n  background-color: #859499;\n  border-radius: 100%;\n  width: 30px;\n  height: 30px;\n  line-height: 30px;\n  vertical-align: top; }\n.info__description {\n  display: inline-block;\n  width: calc(100% - 30px);\n  padding-left: 15px;\n  line-height: 1.4; }\n.more {\n  padding-bottom: 50px; }\n.more-info {\n  width: 690px; }\n.more__info {\n  margin-bottom: 25px;\n  margin-left: 30px; }\n.more__info .arrow-right, .more__info .more__info:before {\n    margin-left: -22px;\n    margin-right: 14px; }\n.subtitle {\n  font-size: 22px;\n  padding-bottom: 15px;\n  border-bottom: 1px dotted #b5b5b5;\n  margin-bottom: 18px; }\n.subtitle--activation {\n  max-width: 690px; }\n.support {\n  float: left;\n  margin-left: 30px;\n  width: 220px; }\n.support__box {\n  border: 1px solid #d5d5d5;\n  border-radius: 5px;\n  background-color: #f5f5f5;\n  color: #666;\n  padding: 20px 15px 15px 15px;\n  font-size: 13px; }\n.support__box h4 {\n    font-size: 18px;\n    margin-bottom: 12px;\n    font-family: \"Cabin Regular\", Helvetica, sans-serif; }\n.support__phone {\n  color: #5ac865;\n  font-size: 30px;\n  margin: 15px 0; }\n.support__input {\n  width: 100%;\n  padding: 10px 5px;\n  font-style: italic;\n  border-radius: 5px;\n  outline: none;\n  box-shadow: inset 0 1px 5px 0 #d5d5d5;\n  border: 1px solid #d5d5d5;\n  margin-top: 5px;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s; }\n.support__input:focus {\n    border: 1px solid #bcbcbc; }\nhtml {\n  box-sizing: border-box; }\n*, *::before, *::after {\n  box-sizing: inherit; }\nbody {\n  font-size: 14px;\n  font-family: Arial, Helvetica, sans-serif;\n  background-color: #fff; }\nhtml, body {\n  height: 100%; }\nul {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\np, h1, h2, h3, h4 {\n  margin: 0; }\n", ""]);
+exports.push([module.i, "/* Document\n   ========================================================================== */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Correct the line height in all browsers.\n * 3. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  line-height: 1.15;\n  /* 2 */\n  -ms-text-size-adjust: 100%;\n  /* 3 */\n  -webkit-text-size-adjust: 100%;\n  /* 3 */ }\n/* Sections\n   ========================================================================== */\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n/**\n * Add the correct display in IE 9-.\n */\narticle, aside, footer, header, nav, section {\n  display: block; }\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n/* Grouping content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\nfigcaption, figure, main {\n  /* 1 */\n  display: block; }\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\na:active, a:hover {\n    outline-width: 0; }\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb, strong {\n  font-weight: inherit; }\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb, strong {\n  font-weight: bolder; }\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode, kbd, samp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\nsub {\n  bottom: -0.25em; }\nsup {\n  top: -0.5em; }\n/* Embedded content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\naudio, video {\n  display: inline-block; }\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change the font styles in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton, input, optgroup, select, textarea {\n  font-family: sans-serif;\n  /* 1 */\n  font-size: 100%;\n  /* 1 */\n  line-height: 1.15;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton, input {\n  /* 1 */\n  overflow: visible; }\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton, select {\n  /* 1 */\n  text-transform: none; }\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton, html [type=\"button\"], [type=\"reset\"], [type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner, [type=\"button\"]::-moz-focus-inner, [type=\"reset\"]::-moz-focus-inner, [type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring, [type=\"button\"]:-moz-focusring, [type=\"reset\"]:-moz-focusring, [type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"], [type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button, [type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n[type=\"search\"]::-webkit-search-cancel-button, [type=\"search\"]::-webkit-search-decoration {\n    -webkit-appearance: none; }\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n/* Interactive\n   ========================================================================== */\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\ndetails, menu {\n  display: block; }\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item; }\n/* Scripting\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\ncanvas {\n  display: inline-block; }\n/**\n * Add the correct display in IE.\n */\ntemplate, [hidden] {\n  display: none; }\n/* Hidden\n   ========================================================================== */\n/**\n * Add the correct display in IE 10-.\n */\n@font-face {\n  font-family: 'Cabin Regular';\n  font-style: normal;\n  src: url(" + __webpack_require__(24) + ") format(\"woff\"), url(" + __webpack_require__(25) + ") format(\"woff2\"); }\n@font-face {\n  font-family: 'Cabin Medium';\n  font-style: normal;\n  src: url(" + __webpack_require__(22) + ") format(\"woff\"), url(" + __webpack_require__(23) + ") format(\"woff2\"); }\n@font-face {\n  font-family: 'Cabin Semibold';\n  font-style: normal;\n  src: url(" + __webpack_require__(26) + ") format(\"woff\"), url(" + __webpack_require__(27) + ") format(\"woff2\"); }\n@font-face {\n  font-family: 'Cabin Bold';\n  font-style: normal;\n  src: url(" + __webpack_require__(20) + ") format(\"woff\"), url(" + __webpack_require__(21) + ") format(\"woff2\"); }\n.right {\n  float: right; }\n.centered-content {\n  width: 940px;\n  margin: 0 auto; }\n.clearfix::after {\n  content: '';\n  display: table;\n  clear: both; }\n.center-align {\n  text-align: center; }\n.arrow-right, .more__info:before {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  border-top: 6px solid transparent;\n  border-bottom: 6px solid transparent;\n  border-left: 7px solid #9b9b9b; }\n.header {\n  height: 75px;\n  font-size: 12px;\n  background-color: #eee; }\n.header__logo {\n  margin-top: 13px; }\n.header__links {\n  margin-top: 5px; }\n.header__links li {\n    display: inline-block; }\n.header__links li:not(:first-child) {\n    margin-left: 8px;\n    border-left: 1px solid #666; }\n.header__link {\n  padding-left: 8px;\n  line-height: 22px;\n  color: #666; }\na.header__link {\n  text-decoration: underline; }\n.user__icons {\n  line-height: 20px;\n  vertical-align: middle;\n  background-image: url(\"images/user-icons.png\");\n  width: 20px;\n  height: 20px;\n  display: inline-block; }\n.user__icons--premium {\n  background-position: 0 0;\n  margin-right: 8px; }\n.user__icons--premium:hover, .header__link:hover .user__icons--premium {\n  background-position: 0 20px; }\n.user__icons--phone {\n  background-position: 20px 0;\n  margin-right: 8px; }\n.navigation {\n  background-image: -webkit-linear-gradient(#5ac865, #257f28);\n  background-image: linear-gradient(#5ac865, #257f28);\n  font-family: \"Cabin Semibold\", Helvetica, sans-serif;\n  letter-spacing: 0;\n  font-size: 20px;\n  height: 45px; }\n.nav__list li {\n  display: inline-block;\n  line-height: 50px; }\n.nav__list li:not(:first-child) {\n  margin-left: 45px; }\n.nav__link {\n  color: #fff;\n  text-decoration: none;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s;\n  text-shadow: 0 -1px 1px #385d66; }\n.nav__link:hover {\n    color: #f2f2f2;\n    text-decoration: underline; }\n.nav__link:hover {\n    text-decoration: none; }\n.footer {\n  border-top: 1px solid #ddd;\n  background-color: #eee; }\n.footer__info {\n  line-height: 40px;\n  color: #666; }\n.footer__info li {\n    display: inline-block;\n    margin-right: 5px;\n    line-height: 12px; }\n.footer__info li:last-child {\n    padding-left: 5px;\n    border-left: 1px solid #666; }\n.footer__info a {\n    color: #666;\n    text-decoration: none;\n    -webkit-transition-duration: 0.3s;\n            transition-duration: 0.3s;\n    text-decoration: underline; }\n.footer__info a:hover {\n      color: #666;\n      text-decoration: underline; }\n.footer__logo {\n  margin-right: 10px;\n  vertical-align: middle; }\nh1, h2 {\n  color: #ddd;\n  font-weight: normal; }\n.title {\n  position: relative;\n  height: 36px; }\n.title__name {\n  position: absolute;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  padding: 0 20px;\n  background-color: #454545;\n  font-family: \"Cabin Bold\", Helvetica, sans-serif;\n  font-size: 32px; }\n.title__line {\n  position: absolute;\n  top: 7px;\n  width: 100%;\n  border: 1px dotted #ddd;\n  border-width: 1px 0 0; }\n.tagline {\n  margin: 5px 0 40px 0;\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  font-size: 20px; }\n.first-class {\n  padding: 40px 0;\n  background-image: -webkit-linear-gradient(#454545 85%, #7e7e7e 100%);\n  background-image: linear-gradient(#454545 85%, #7e7e7e 100%); }\n.slider-container {\n  float: left;\n  width: 600px;\n  height: 345px; }\n.image-container {\n  position: relative; }\n.mac {\n  position: absolute; }\n.mac--overlay {\n  top: 3px;\n  right: 60px;\n  z-index: 2; }\n.slider {\n  position: absolute;\n  top: 13px;\n  left: 70px;\n  width: 461px;\n  height: 297px;\n  overflow: hidden; }\n.slider__image {\n  position: absolute;\n  top: 0;\n  left: 461px;\n  z-index: 1; }\n.slider__image.current {\n    -webkit-transform: translateX(-461px);\n            transform: translateX(-461px);\n    z-index: 1;\n    -webkit-transition-duration: 0.75s;\n            transition-duration: 0.75s; }\n.slider__image.previous {\n    -webkit-transform: translateX(calc(-461px * 2));\n            transform: translateX(calc(-461px * 2));\n    z-index: 0;\n    -webkit-transition-duration: 0.75s;\n            transition-duration: 0.75s; }\n.slider__overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  opacity: 0;\n  -webkit-transition-duration: 1s;\n          transition-duration: 1s; }\n.slider__overlay.current {\n    opacity: 1; }\n.selector-container {\n  float: left;\n  width: 340px;\n  padding-left: 40px;\n  margin-top: 20px; }\n.slide__features {\n  margin: 0 0 10px 0;\n  font-size: 22px;\n  color: #fff;\n  font-family: \"Cabin Bold\", Helvetica, sans-serif; }\n.slide__item {\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  color: #fff;\n  font-size: 18px;\n  opacity: .5;\n  margin: 0 0 15px -40px; }\n.slide__item.current {\n    opacity: 1; }\n.slide__item.current .slide__number {\n      background-color: #fff;\n      color: #454545; }\n.slide__number {\n  display: inline-block;\n  width: 32px;\n  height: 32px;\n  border-radius: 100%;\n  border: 1px solid #fff;\n  text-align: center;\n  line-height: 30px;\n  margin-right: 10px;\n  text-indent: 1px;\n  vertical-align: top; }\n.slide__text {\n  display: inline-block;\n  width: 298px;\n  margin-top: 4px;\n  line-height: 1.4;\n  color: #fff;\n  text-decoration: none; }\n.slide__see {\n  color: #fff;\n  font-size: 16px;\n  text-decoration: underline;\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  margin-top: 10px;\n  display: inline-block; }\n.class-activation {\n  padding: 50px 0; }\n.class-table {\n  float: left;\n  width: 690px; }\n.activation__description {\n  font-size: 16px;\n  margin: 18px 0 20px 0; }\n.specs {\n  border: 1px solid #ddd;\n  border-collapse: collapse;\n  width: 100%; }\n.specs__head {\n  font-size: 16px;\n  padding: 10px 15px;\n  text-align: left;\n  background-color: #ddd; }\n.specs__row {\n  font-size: 14px;\n  cursor: pointer;\n  background-color: #fff;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s; }\n.specs__row input[type='checkbox'] {\n    margin-right: 8px; }\n.specs__row label {\n    cursor: pointer; }\n.specs__row:nth-child(even).checked, .specs__row:nth-child(odd).checked {\n    background-color: #e6f5e6; }\n.specs__row:nth-child(even) {\n  background-color: #f2f2f2;\n  border: 1px solid #ddd;\n  border-width: 1px 0; }\nth {\n  padding: 15px;\n  font-weight: normal; }\ntd {\n  padding: 10px 15px; }\n.button__row {\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px;\n  width: 100%;\n  padding: 30px 0; }\n.button__activate {\n  box-shadow: inset 0 1px 1px 0 #fff, inset 0 -1px 1px 0 #0f1410;\n  background-image: -webkit-linear-gradient(#ac01af, #670167);\n  background-image: linear-gradient(#ac01af, #670167);\n  border-radius: 5px;\n  border: 1px solid #670167;\n  color: #fff;\n  font-family: \"Cabin Regular\", Helvetica, sans-serif;\n  padding: 19px 0 17px 0;\n  width: 380px;\n  font-size: 20px;\n  outline: none;\n  text-shadow: 0 1px #670167;\n  cursor: pointer;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s; }\n.button__activate:hover {\n    background-image: -webkit-linear-gradient(#b601b9, #710171);\n    background-image: linear-gradient(#b601b9, #710171); }\n.button__activate:active {\n    box-shadow: inset 0 -5px 20px 0 #670167; }\n.button__activate:after {\n    content: '>>';\n    display: inline-block;\n    -webkit-transform: scaleX(0.5) scaleY(1.2);\n            transform: scaleX(0.5) scaleY(1.2);\n    font-family: Arial, Helvetica, sans-serif; }\n.button__info {\n  display: block;\n  margin-top: 25px;\n  font-size: 16px;\n  color: #666; }\n.info__row {\n  padding: 15px 40px 15px 20px;\n  background-color: #dff8ff;\n  border: 1px solid #ddd;\n  border-width: 0 1px 1px 1px;\n  width: 100%; }\n.info__icon {\n  display: inline-block;\n  font-size: 24px;\n  color: #fff;\n  background-color: #859499;\n  border-radius: 100%;\n  width: 30px;\n  height: 30px;\n  line-height: 30px;\n  vertical-align: top; }\n.info__description {\n  display: inline-block;\n  width: calc(100% - 30px);\n  padding-left: 15px;\n  line-height: 1.4; }\n.more {\n  padding-bottom: 50px; }\n.more-info {\n  width: 690px; }\n.more__info {\n  margin-bottom: 25px;\n  margin-left: 30px; }\n.more__info .arrow-right, .more__info .more__info:before {\n    margin-left: -22px;\n    margin-right: 14px; }\n.subtitle {\n  font-size: 22px;\n  padding-bottom: 15px;\n  border-bottom: 1px dotted #b5b5b5;\n  margin-bottom: 18px; }\n.subtitle--activation {\n  max-width: 690px; }\n.support {\n  float: left;\n  margin-left: 30px;\n  width: 220px; }\n.support__box {\n  border: 1px solid #d5d5d5;\n  border-radius: 5px;\n  background-color: #f5f5f5;\n  color: #666;\n  padding: 20px 15px 15px 15px;\n  font-size: 13px; }\n.support__box h4 {\n    font-size: 18px;\n    margin-bottom: 12px;\n    font-family: \"Cabin Regular\", Helvetica, sans-serif; }\n.support__phone {\n  color: #5ac865;\n  font-size: 30px;\n  margin: 15px 0; }\n.support__input {\n  width: 100%;\n  padding: 10px 5px;\n  font-style: italic;\n  border-radius: 5px;\n  outline: none;\n  box-shadow: inset 0 1px 5px 0 #d5d5d5;\n  border: 1px solid #d5d5d5;\n  margin-top: 5px;\n  -webkit-transition-duration: 0.3s;\n          transition-duration: 0.3s; }\n.support__input:focus {\n    border: 1px solid #bcbcbc; }\nhtml {\n  box-sizing: border-box; }\n*, *::before, *::after {\n  box-sizing: inherit; }\nbody {\n  font-size: 14px;\n  font-family: Arial, Helvetica, sans-serif;\n  background-color: #fff; }\nhtml, body {\n  height: 100%; }\nul {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\np, h1, h2, h3, h4 {\n  margin: 0; }\n", ""]);
 
 // exports
 
@@ -662,63 +674,45 @@ module.exports = "data:application/octet-stream;base64,d09GMgABAAAAAFYQABMAAAAA2
 
 /***/ }),
 /* 28 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_activation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_activation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_activation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_slider__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__js_slider__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_application_scss__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_application_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__styles_application_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__images_doctoralia_logo_png__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__images_doctoralia_logo_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__images_doctoralia_logo_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__images_logo_mini_png__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__images_logo_mini_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__images_logo_mini_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__images_favicon_png__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__images_favicon_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__images_favicon_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__images_user_icons_png__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__images_user_icons_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__images_user_icons_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__images_mac_png__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__images_mac_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__images_mac_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__images_mac_overlay_png__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__images_mac_overlay_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__images_mac_overlay_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__images_slider_slide1_png__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__images_slider_slide1_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__images_slider_slide1_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__images_slider_slide1b_png__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__images_slider_slide1b_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__images_slider_slide1b_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__images_slider_slide2_png__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__images_slider_slide2_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__images_slider_slide2_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__images_slider_slide2b_png__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__images_slider_slide2b_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__images_slider_slide2b_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__images_slider_slide3_png__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__images_slider_slide3_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__images_slider_slide3_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__images_slider_slide3b_png__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__images_slider_slide3b_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__images_slider_slide3b_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__images_slider_slide4_png__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__images_slider_slide4_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__images_slider_slide4_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__images_slider_slide4b_png__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__images_slider_slide4b_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__images_slider_slide4b_png__);
 
 
+__webpack_require__(0);
 
+__webpack_require__(1);
 
+__webpack_require__(16);
 
+__webpack_require__(2);
 
+__webpack_require__(4);
 
+__webpack_require__(3);
 
+__webpack_require__(15);
 
+__webpack_require__(6);
 
+__webpack_require__(5);
 
+__webpack_require__(7);
 
+__webpack_require__(8);
 
+__webpack_require__(9);
 
+__webpack_require__(10);
 
+__webpack_require__(11);
 
+__webpack_require__(12);
 
+__webpack_require__(13);
 
-
+__webpack_require__(14);
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map
