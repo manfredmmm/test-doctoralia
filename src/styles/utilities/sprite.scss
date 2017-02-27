@@ -1,0 +1,23 @@
+.user__icons {
+  line-height: 20px;
+  vertical-align: middle;
+  background-image: url('/images/user-icons.png');
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.user__icons--premium {
+  background-position: 0 0;
+  margin-right: 8px;
+}
+
+.user__icons--premium:hover,
+%user__icons--premium-hover {
+  background-position: 0 20px;
+}
+
+.user__icons--phone {
+  background-position: 20px 0;
+  margin-right: 8px;
+}
