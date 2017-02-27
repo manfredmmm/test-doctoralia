@@ -15,10 +15,3 @@ yarn start
 ```
 ### Open it without setup
 You can open index.html from /dist directory with your browser in order to see the page
-```
-webpack
-```
-### Deploy files
-```
-webpack --progress -p
-```
