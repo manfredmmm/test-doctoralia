@@ -75,11 +75,11 @@
 }
 
 .slide__item {
+  margin: 0 0 15px -40px;
   font-family: $cabin;
   color: $white;
   font-size: $size-larger;
   opacity: .5;
-  margin: 0 0 15px -40px;
   &.current {
     opacity: 1;
     .slide__number {
@@ -95,7 +95,6 @@
   height: 32px;
   border-radius: 100%;
   border: 1px solid $white;
-  text-align: center;
   line-height: 30px;
   margin-right: 10px;
   text-indent: 1px;
@@ -112,10 +111,10 @@
 }
 
 .slide__see {
-  color: $white;
-  font-size: $size-large;
-  text-decoration: underline;
-  font-family: $cabin;
-  margin-top: 10px;
   display: inline-block;
+  margin-top: 10px;
+  font-size: $size-large;
+  font-family: $cabin;
+  color: $white;
+  text-decoration: underline;
 }

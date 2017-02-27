@@ -20,10 +20,10 @@
 }
 
 .subtitle {
-  font-size: $size-huge;
   padding-bottom: 15px;
-  border-bottom: 1px dotted $nobel;
   margin-bottom: 18px;
+  border-bottom: 1px dotted $nobel;
+  font-size: $size-huge;
 }
 
 .subtitle--activation {

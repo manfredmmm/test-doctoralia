@@ -11,8 +11,12 @@ Live version at your localhost:8080
 ```
 yarn start
 ```
-### Deploy
-/dist directory with prod files
+### Open it without setup
+You can open index.html from /dist directory with your browser in order to see the page
 ```
 webpack
+```
+### Deploy files
+```
+webpack --progress -p
 ```

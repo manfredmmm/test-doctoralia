@@ -8,27 +8,27 @@
 }
 
 .activation__description {
-  font-size: $size-large;
   margin: 18px 0 20px 0;
+  font-size: $size-large;
 }
 
 .specs {
+  width: 100%;
   border: 1px solid $alto;
   border-collapse: collapse;
-  width: 100%;
 }
 
 .specs__head {
-  font-size: $size-large;
   padding: 10px 15px;
-  text-align: left;
+  font-size: $size-large;
   background-color: $alto;
+  text-align: left;
 }
 
 .specs__row {
   font-size: $size-base;
-  cursor: pointer;
   background-color: $white;
+  cursor: pointer;
   transition-duration: $default-timing;
   input[type='checkbox'] {
     margin-right: 8px;
@@ -43,9 +43,9 @@
 }
 
 .specs__row:nth-child(even) {
-  background-color: $concrete;
   border: 1px solid $alto;
   border-width: 1px 0;
+  background-color: $concrete;
 }
 
 th {
@@ -58,23 +58,23 @@ td {
 }
 
 .button__row {
-  border: 1px solid $alto;
-  border-width: 0 1px 1px;
   width: 100%;
   padding: 30px 0;
+  border: 1px solid $alto;
+  border-width: 0 1px 1px;
 }
 
 .button__activate {
-  box-shadow: inset 0 1px 1px 0 $white, inset 0 -1px 1px 0 $black;
-  background-image: linear-gradient($purple, $pompadour);
-  border-radius: 5px;
-  border: 1px solid $pompadour;
-  color: $white;
-  font-family: $cabin;
-  padding: 19px 0 17px 0;
   width: 380px;
-  font-size: $size-largest;
+  padding: 19px 0 17px 0;
   outline: none;
+  border-radius: $border-radius;
+  border: 1px solid $pompadour;
+  box-shadow: inset 0 1px 1px 0 $white, inset 0 -1px 1px 0 $black;
+  font-family: $cabin;
+  font-size: $size-largest;
+  color: $white;
+  background-image: linear-gradient($purple, $pompadour);
   text-shadow: 0 1px $pompadour;
   cursor: pointer;
   transition-duration: $default-timing;
@@ -100,23 +100,23 @@ td {
 }
 
 .info__row {
+  width: 100%;
   padding: 15px 40px 15px 20px;
-  background-color: $pattens-blue;
   border: 1px solid $alto;
   border-width: 0 1px 1px 1px;
-  width: 100%;
+  background-color: $pattens-blue;
 }
 
 .info__icon {
   display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  line-height: 30px;
+  vertical-align: top;
   font-size: 24px;
   color: $white;
   background-color: $regent-gray;
-  border-radius: 100%;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  vertical-align: top;
 }
 
 .info__description {
